@@ -29,6 +29,20 @@
   }
 
 
+  Configuring DB entries 
+  ----------------------
+
+  Locate the machine.config on ur machine: %windir%\Microsoft.NET\Framework64\[version]\config\machine.config 
+
+  Under the 
+    <connectionStrings>
+
+  section
+
+  add your DB entry.
+
+    <!-- General connections -->
+    <add name="db" connectionString="User Id=db;Password=password;Data Source=db.myco.com;Connection Lifetime=300;Max Pool Size=10;Min Pool Size=0;Validate Connection=true;Enlist=false;Connection Timeout=60;HA Events=true;" providerName="Oracle.DataAccess.Client" />
 
 
 #>
