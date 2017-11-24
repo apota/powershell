@@ -16,15 +16,15 @@
    ----------------------
 
    {
-	"OutputDirectoryName": "ruleset_comparisons",
+	"OutputDirectoryName": "compare_dir",
 	"JoinColumns": "name",
-	"CompareColumns": "marketcriteria,selectcriteria",
-	"SourceSchema": "radar",
-	"TargetSchema": "radar",
-	"SourceTable": "importedrulesets@db1",
-	"TargetTable": "rulesets@db1",
-	"SourceWhereClause": "pushid = hextoraw('58D1751C155428E1E05357D6E50A61CD')",
-	"TargetWhereClause": "vehicleid is null and entityid = hextoraw('11111111111111111111111111111111')",
+	"CompareColumns": "col1,col2",
+	"SourceSchema": "schema1",
+	"TargetSchema": "schema1",
+	"SourceTable": "tableA",
+	"TargetTable": "tableB",
+	"SourceWhereClause": "",
+	"TargetWhereClause": "",
 	"ExcludedCompareColumns": ""
   }
 
@@ -52,7 +52,7 @@ Import-Module -Name .\Modules\OracleClient;
 
 Set-Variable config $null -Scope Script
 $dbArgs2 = @{
-    Database = "va2.prd" 
+    Database = "db" 
     Credential = if ($Credential) {$Credential} else {Get-Credential -Message "Enter Database Credential:"}
 }
 
