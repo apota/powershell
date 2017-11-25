@@ -14,18 +14,34 @@
 
    Sample JSON input file
    ----------------------
+   Compare col1 and col2 using key1 and key2 as the join columns
+   
+   {
+  	"OutputDirectoryName": "compare_dir",
+  	"JoinColumns": "key1,key2",
+  	"CompareColumns": "col1,col2",
+  	"SourceSchema": "schema1",
+  	"TargetSchema": "schema1",
+  	"SourceTable": "tableA",
+  	"TargetTable": "tableB",
+  	"SourceWhereClause": "",
+  	"TargetWhereClause": "",
+  	"ExcludedCompareColumns": ""
+  }
+
+   Compare ALL columns EXCEPT column col3 using key1 and key2 as the join columns
 
    {
-	"OutputDirectoryName": "compare_dir",
-	"JoinColumns": "name",
-	"CompareColumns": "col1,col2",
-	"SourceSchema": "schema1",
-	"TargetSchema": "schema1",
-	"SourceTable": "tableA",
-	"TargetTable": "tableB",
-	"SourceWhereClause": "",
-	"TargetWhereClause": "",
-	"ExcludedCompareColumns": ""
+    "OutputDirectoryName": "compare_dir",
+    "JoinColumns": "key1,key2",
+    "CompareColumns": "*",
+    "SourceSchema": "schema1",
+    "TargetSchema": "schema1",
+    "SourceTable": "tableA",
+    "TargetTable": "tableB",
+    "SourceWhereClause": "",
+    "TargetWhereClause": "",
+    "ExcludedCompareColumns": "col3"
   }
 
 
