@@ -219,6 +219,14 @@ Function Calc() {
 
     #Write-Output $script:AddedSql
 
+    $OutputSqlFile = "{0}/output.sql" -f $script:OutputPath
+    "------------------[added sql]-------------" > $OutputSqlFile
+    $script:AddedSql >> $OutputSqlFile
+    "------------------[deleted sql]-------------" >> $OutputSqlFile
+    $script:RemovedSql >> $OutputSqlFile
+    "------------------[changes sql]-------------" >> $OutputSqlFile
+    $script:ChangeSql >> $OutputSqlFile
+
 }
 
 
