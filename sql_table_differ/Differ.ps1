@@ -86,19 +86,19 @@ Function ValidateOutputFiles([string] $addedFile, [string] $removedFile, [string
         New-Item $OutputDir -ItemType "directory"
     } 
 
-    if ((Test-Path $OutputDir + $addedFile)) {
-        Remove-Item $OutputDir + $addedFile -Force
+    if ((Test-Path $addedFile)) {
+        Remove-Item$addedFile -Force
     }
-    if ((Test-Path $OutputDir + $changeFile)) {
-        Remove-Item $OutputDir + $changeFile -Force
+    if ((Test-Path $changeFile)) {
+        Remove-Item $changeFile -Force
     }
-    if ((Test-Path $OutputDir + $removedFile)) {
-        Remove-Item $OutputDir + $removedFile -Force
+    if ((Test-Path $removedFile)) {
+        Remove-Item $removedFile -Force
     }
 
-   New-Item $OutputDir + $addedFile -ItemType "file"
-   New-Item $OutputDir + $changeFile -ItemType "file"
-   New-Item $OutputDir + $removedFile -ItemType "file"
+   New-Item $addedFile -ItemType "file"
+   New-Item $changeFile -ItemType "file"
+   New-Item $removedFile -ItemType "file"
 
 }
 
@@ -111,12 +111,12 @@ Function Execute() {
 
     $output = CalculateDiffSql $dbconn $input
 
-    ValidateOutputFiles $output.AddedCSVFile $output.RemovedCSVFile $output.ChangeCSVFile 
 
      $addedOutputFile = $OutputDir + $output.AddedCSVFile
      $removedOutputFile = $OutputDir + $output.RemovedCSVFile
      $changeOutputFile = $OutputDir + $output.ChangeCSVFile
 
+     ValidateOutputFiles $addedOutputFile $removedOutputFile $changeOutputFile 
 
     if ($Step -eq "DisplayAdds") {
 
