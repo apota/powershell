@@ -1,5 +1,36 @@
 Add-Type -AssemblyName System.Data.OracleClient
 
+
+<#
+    Database connection
+#>
+
+Function GetDBConnection([string] $dbtype, [string] $database) {
+    
+    $dbArgs2 = @{
+        Database = $database
+        Credential = if ($Credential) {$Credential} else {Get-Credential -Message "Enter Database Credential:"}
+    }
+
+    $dbconn = New-OracleConnection @dbArgs2
+
+    $dbconn
+}
+
+<#
+    Database query execution
+#>
+
+Function Get-QueryData([string] $cmdText, [System.Data.OracleClient.OracleConnection] $connection) {
+        $Cmd = New-OracleCommand -Connection $connection -CommandText $cmdText
+        $Datatable = New-Object System.Data.DataTable
+        $Reader = $Cmd.ExecuteReader()
+        $Datatable.Load($Reader)
+        $Cmd.Dispose() | Out-Null
+        $DataTable
+}
+
+
 Function OracleCredential([string] $DataSource='*') {
     if (-not $_oracleCred) { 
         if (${function:Read-ManagedCredential}) { 
