@@ -64,7 +64,7 @@
 Param 
 ( 
     [Parameter(Mandatory=$True)]
-    [ValidateSet("DisplayAdds","DisplayDeletes", "DisplayChanges")]
+    [ValidateSet("DisplayAdds","DisplayDeletes", "DisplayChanges", "Generate_All_Without_Display")]
     [string] $Step,
     [Parameter(Mandatory=$True)]
     [string] $InputFile,
