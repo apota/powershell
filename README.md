@@ -12,7 +12,7 @@ Powershell tools for everyday programming
          the phone belongs to. The website https://theylookup.com/ can be scraped for FREE. If your phone number 
          is say 318-299-XXXX, thenj ust scrape the url https://theylookup.com/318-299.html as shown in the script with 
          the full phone number and the script will stop once it finds the full phone. An instance of IE is spawned 
-         and the browser will stop at the page with the found phone number. You can watch the automated IE zoom through 
-         the pages. It's fun to watch.
+         and the browser will stop at the page with the found phone number. You can watch the automated IE zoom 
+         through the pages. It's fun to watch.
         
         
