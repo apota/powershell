@@ -8,8 +8,8 @@ Powershell tools for everyday programming
 
 2. reverse_phone_lookup:
 
-        Popular Reverse phone lookup websites charging you money for letting you know who the phone belongs to?
-        The website https://theylookup.com/ can be scraped. If your phone number is say 318-299-XXXX, then 
+         Getting annoying spam calls? Popular Reverse phone lookup websites charge you money for letting you know who the phone belongs to!
+        The website https://theylookup.com/ can be scraped for FREE. If your phone number is say 318-299-XXXX, then 
         just scrape the url https://theylookup.com/318-299.html as shown in the script with the full phone number
         and the script will stop once it finds the full phone. An instance of IE is spawned and the browser will
         stop at the page with the found phone number. You can watch the automated IE zoom through the pages. It'say
