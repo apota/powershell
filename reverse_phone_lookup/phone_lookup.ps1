@@ -1,6 +1,14 @@
-$surl= "https://theylookup.com/318-299.html"
+﻿$phone = $args[0]
+$phone -match '(?<first3>\d\d\d)-(?<mid3>\d\d\d)-(?<last4>\d\d\d\d)'
+
+$surl= "https://theylookup.com/{0}-{1}.html" -f $Matches.first3, $Matches.mid3
+
+$anchorNextId = "{0}-{1}_next" -f $Matches.first3, $Matches.mid3
+
+$pattern = '<td class=" ">{0}</td><td class=" ">(?<phoneOwner>(.)+)</td>' -f $phone
+
 $ie = new-object -com "InternetExplorer.Application"
-$ie.visible = $true
+$ie.visible = $false
 $ie.navigate($surl)
 
 do {sleep 1} until (-not ($ie.Busy))
@@ -9,17 +17,24 @@ $doc = $ie.Document;
 
 while($true) {
  
-    if ($doc.body.innerHTML.IndexOf("318-299-2835") -gt 0) {
-       Write-Host "Found phone"
+    if ($doc.body.innerHTML.IndexOf($phone) -gt 0) {
+       $doc.body.innerHTML -match $pattern
+       Write-Host $Matches.phoneOwner
        break
     }
 
     For ($i =0; $i -lt $doc.anchors.length; $i++) {
-        if ($doc.anchors[$i].id -eq "318-299_next") {
+        if ($doc.anchors[$i].id -eq $anchorNextId) {
             $doc.anchors[$i].click();
-            Write-Host "Working..."
             $doc = $ie.Document
             break;
         }
-    }   
+    }
+    Write-Host "Working..."    
 }
+
+
+$ie.Quit()
+[System.Runtime.Interopservices.Marshal]::ReleaseComObject($ie) | Out-Null
+[System.GC]::Collect()
+[System.GC]::WaitForPendingFinalizers()
