@@ -17,7 +17,7 @@ while($true) {
     For ($i =0; $i -lt $doc.anchors.length; $i++) {
         if ($doc.anchors[$i].id -eq "318-299_next") {
             $doc.anchors[$i].click();
-            Write-Host "Next click"
+            Write-Host "Working..."
             $doc = $ie.Document
             break;
         }
