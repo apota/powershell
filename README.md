@@ -10,7 +10,6 @@ Powershell tools for everyday programming
 
         Pass in a US phone number in the format XXX-XXX-XXXX and this will spit out the owner of that phone. 
         DISCLAIMER: The website scraped by this script for this phone may not keep an accurate database of 
-        the phone record. Yes, whitepages do reverse lookup, but they won't give you the name
-	unless you pay subscribe to something
+        the phone record. Yes, whitepages do reverse lookup, but they won't give you the name for free.
         
         Usage: ./reverse_phone_lookup 800-555-1212
