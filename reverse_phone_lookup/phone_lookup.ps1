@@ -15,7 +15,8 @@ do {sleep 1} until (-not ($ie.Busy))
 
 $doc = $ie.Document;
 
-while($true) {
+
+while($doc -ne $null) {
  
     if ($doc.body.innerHTML.IndexOf($phone) -gt 0) {
        $doc.body.innerHTML -match $pattern
