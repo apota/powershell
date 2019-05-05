@@ -1,5 +1,5 @@
 ﻿$phone = $args[0]
-$phone -match '(?<first3>\d\d\d)-(?<mid3>\d\d\d)-(?<last4>\d\d\d\d)'
+$phone -match '(?<first3>\d\d\d)(-)?(?<mid3>\d\d\d)(-)?(?<last4>\d\d\d\d)'
 
 $surl= "https://theylookup.com/{0}-{1}.html" -f $Matches.first3, $Matches.mid3
 
@@ -30,7 +30,6 @@ while($true) {
             break;
         }
     }
-    Write-Host "Working..."    
 }
 
 
