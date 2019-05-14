@@ -34,7 +34,7 @@ while($doc -ne $null) {
     }
 }
 
-
+#If you don't to this, you will have 'N' runaway IE instances sucking up your RAM and this script will eventually stop working.
 $ie.Quit()
 [System.Runtime.Interopservices.Marshal]::ReleaseComObject($ie) | Out-Null
 [System.GC]::Collect()
